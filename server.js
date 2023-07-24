@@ -6,7 +6,11 @@ const logger = require('morgan');
 const session = require('express-session');
 const passport = require('passport');
 
+// Run db seed
+require('./database-helpers/seedExercises');
+
 require('dotenv').config();
+
 require('./config/database');
 
 require('./config/passport');
