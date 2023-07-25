@@ -46,3 +46,7 @@ It also uses an API [ExerciseAPI](https://rapidapi.com/justin-WFnsXH_t6/api/exer
     * Bringing views together, being able to add workout, exercise and set at the same time
 * User metric tracking, e.g BMI, progress pics, body fat %
 * Built in login, or more login options
+* Users able to save workout templates to quickly get workouts
+* Weight and sets prefilled based on last time that exercise was performed
+* Workouts index page to be sorted by date and display the exercises included as subtext
+* Workouts index view toggle calender view
