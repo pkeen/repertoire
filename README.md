@@ -12,6 +12,9 @@ It also uses an API [ExerciseAPI](https://rapidapi.com/justin-WFnsXH_t6/api/exer
 ### Set
 ![workouts](./public/images/set.png)
 
+## ERD Database Planning
+![ERD](./public/images/ERD.png)
+
 ## MVP
 * User Authentication
 * Add workouts
