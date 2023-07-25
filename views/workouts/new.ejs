@@ -1,0 +1,11 @@
+<%- include('../partials/header') %>
+
+<form action="/workouts" method="POST">
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title">
+    <label for="date">Date</label>
+    <input type="datetime-local" name="date" id="date">
+    <button type="submit">Save</button>
+</form>
+
+<%- include('../partials/footer') %>

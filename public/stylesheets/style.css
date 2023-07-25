@@ -1,0 +1,18 @@
+#workouts-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+
+}
+
+.col-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+.container {
+    margin-left: 20vw;
+    margin-right: 20wv;
+
+}

@@ -1,0 +1,11 @@
+<%- include('../partials/header') %>
+
+<form action="/workouts/<%= workout._id %>?_method=PUT" method="POST">
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title" value="<%= workout.title %>">
+    <label for="date">Date</label>
+    <input type="datetime-local" name="date" id="date" value="<%= workout.formatDateForDatetimeLocal() %>">
+    <button type="submit">Save</button>
+</form>
+
+<%- include('../partials/footer') %>

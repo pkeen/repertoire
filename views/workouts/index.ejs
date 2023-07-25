@@ -1,0 +1,29 @@
+<%- include('../partials/header') %>
+
+<div>
+    <div class="col-2">
+        <h2>Workouts</h2>
+        
+        <div>
+            <a href="/workouts/new"><button>Add</button></a>
+        </div>
+    </div>
+
+    <%- workouts.map(workout => {
+        return `
+            <div class="col-2">
+                <div>
+                    <a href="/workouts/${workout._id}"><p>${workout.formatDate()}</p></a>
+                </div>
+                <div>
+                    <p>${workout.title}</p>
+                    <p>${workout.user}</p>    
+                </div>
+                
+            </div>`
+        }).join("") %>
+
+
+</div>
+
+<%- include('../partials/footer') %>
