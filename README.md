@@ -29,6 +29,11 @@ It also uses an API [ExerciseAPI](https://rapidapi.com/justin-WFnsXH_t6/api/exer
 | PUT    | /workouts/:id/sets/:id | update  | Update a set                       |
 | DELETE | /workouts/:id/sets/:id | destroy | Destroy a set                      |
 
+## User Stories
+* AAU I want to see a list of my workouts on my homepage
+* AAU I want to be able to add a workout quickly and add sets within the same page
+* AAU I want to search exercises by muscle, body-part and equipment
+
 ## MVP
 * User Authentication
 * Add workouts
@@ -36,4 +41,8 @@ It also uses an API [ExerciseAPI](https://rapidapi.com/justin-WFnsXH_t6/api/exer
 * Add reps to sets
 * Use the exerciseDB API
 
-
+## Stretch Goals
+* A nicer front-end maybe using a library
+    * Bringing views together, being able to add workout, exercise and set at the same time
+* User metric tracking, e.g BMI, progress pics, body fat %
+* Built in login, or more login options
