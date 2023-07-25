@@ -1,10 +1,15 @@
 const mongoose = require('mongoose');
 
-const setSchema = new mongoose.Schema ({
-    // exerciseId: reference
-    // workoutId: reference
+const setSchema = new Schema({
+    // fk workoutExercise
+    workoutExercise: {
+        type: Schema.Types.ObjectId,
+        ref: 'WorkoutExercise'
+    },
     reps: Number,
     weight: Number
+}, {
+    timestamps: true
 });
 
-// module.exports = mongoose.model('Set', setSchema);
+module.exports = mongoose.model('Set', setSchema);

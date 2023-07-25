@@ -31,7 +31,7 @@ const create = async (req, res) => {
     }
 }
 
-const show = async ( req , res ) => {
+const edit = async ( req , res ) => {
     try {
         const workout = await Workout.findById(req.params.id);
         res.render('workouts/show', {
@@ -40,6 +40,17 @@ const show = async ( req , res ) => {
         });
     } catch (err) {
         console.log(err);
+    }
+}
+
+const show = async ( req, res ) => {
+    try {
+        const workout = await Workout.findById(req.params.id);
+        res.render('workouts/show', {
+            title: workout.title
+        }); 
+    } catch (err) {
+        console.log(err)
     }
 }
 
@@ -57,6 +68,7 @@ module.exports = {
     index, 
     create,
     new: newWorkout, 
+    edit,
     show, 
     update
 }

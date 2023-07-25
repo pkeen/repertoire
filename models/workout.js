@@ -1,21 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-
-const setSchema = new Schema({
-    // exercise
-    exercise: {
-        type: Schema.Types.ObjectId,
-        ref: 'Exercise'
-    },
-    reps: Number,
-    weight: Number
-},{
-    timestamps: true
-}
-);
-
-
 const workoutSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
@@ -23,7 +8,6 @@ const workoutSchema = new Schema({
     },
     title: String,
     date: Date,
-    sets: [setSchema],
 }, {
     timestamps: true,
     methods: {

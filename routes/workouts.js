@@ -9,8 +9,11 @@ router.get('/', ensureLoggedIn, workoutsCtlr.index);
 // new 
 router.get('/new', ensureLoggedIn, workoutsCtlr.new);
 
-// Show
-router.get('/:id', ensureLoggedIn, workoutsCtlr.show);
+// show 
+router.get('/:id', ensureLoggedIn, workoutsCtlr.show)
+
+// edit
+router.get('/:id/edit', ensureLoggedIn, workoutsCtlr.edit);
 
 // Patch update
 router.put('/:id', ensureLoggedIn, workoutsCtlr.update);
