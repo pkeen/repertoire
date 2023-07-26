@@ -1,5 +1,29 @@
 <%- include('../partials/header') %>
 
-<h2> show page </h2>
+<a href="/workouts/<%= workout.id %>/edit">Edit Details</a>
 
-<%- include('../partials/footer') %></input>
+<h2>Exercises</h2>
+<% workout.exercises.forEach(e => { %>
+    <h3><%= e.exerciseData.name %></h3>
+    <p>Target: <%= e.exerciseData.target.toUpperCase() %></p>
+    <p>Equipment: <%= e.exerciseData.equipment %></p>
+    <img src="<%= e.exerciseData.gifUrl %>" alt="Gif showing exercise">
+    <ul>
+        <%- e.sets.map((s, i) => {
+            return `<li>Set ${i+1}. ${s.weight} | ${s.reps}</li>`
+        }).join("") %>
+    </ul>
+    <form 
+        action="/workouts/<%= workout.id %>/exercises/<%= e.id %>/sets"
+        method="POST"
+    >
+        <label for="weight">Weight</label>
+        <input type="number" name="weight" id="weight">
+        <label for="reps">Reps</label>
+        <input type="number" name="reps" id="reps">
+        <button type="submit">Add</button>
+    </form>
+<% }) %>
+<a href="/workouts/<%= workout.id %>/exercises/new">Add exercise</a>
+
+<%- include('../partials/footer') %>

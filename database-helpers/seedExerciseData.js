@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const Exercise = require('../models/exercise');
+const ExerciseData = require('../models/exerciseData');
 
 dotenv.config();
 
@@ -42,21 +42,21 @@ const seed = async () => {
         // await Exercise.deleteMany({}) // delete all exercises
 
         // If collection already holds documents exit
-        const exerciseCount = await Exercise.countDocuments({});
+        const exerciseCount = await ExerciseData.countDocuments({});
         if (exerciseCount === 0) {
             console.log('Adding data to collection...');
             // Fetch Exercises
             const exerciseList = await fetch(endpoint, options).then(res => res.json());
             // console.log(exerciseList);
             const exercisePromises = exerciseList.map(exercise => {
-                Exercise.create(exercise);
+                ExerciseData.create(exercise);
             });
 
             // console.log(exercisePromises);
 
             await Promise.all(exercisePromises);
 
-            console.log(await Exercise.find({}));
+            console.log(await ExerciseData.find({}));
 
         } else {
             console.log("No data added to collection")

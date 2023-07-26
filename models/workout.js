@@ -1,6 +1,39 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+/* Set */
+const setSchema = new Schema({
+    // fk workoutExercise
+    // workoutExercise: { //
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'WorkoutExercise'
+    // },
+    reps: Number,
+    weight: Number
+}, {
+    timestamps: true
+});
+
+
+/* Exercise */
+const exerciseSchema = new Schema({
+    // workout and exercise fks
+    // workout: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Workout'
+    // },
+    exerciseData: {
+        type: Schema.Types.ObjectId,
+        ref: 'Exercise'
+    },
+    sets: [setSchema]
+
+}, {
+    timestamps: true
+});
+
+
+/* Workout */
 const workoutSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
@@ -8,6 +41,7 @@ const workoutSchema = new Schema({
     },
     title: String,
     date: Date,
+    exercises: [exerciseSchema]
 }, {
     timestamps: true,
     methods: {

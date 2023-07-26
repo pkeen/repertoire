@@ -8,7 +8,7 @@ const passport = require('passport');
 const methodOverride = require('method-override');
 
 // Run db seed
-require('./database-helpers/seedExercises');
+require('./database-helpers/seedExerciseData');
 
 require('dotenv').config();
 
@@ -16,8 +16,11 @@ require('./config/database');
 
 require('./config/passport');
 
+// Routers
 const indexRouter = require('./routes/index');
 const workoutsRouter = require('./routes/workouts');
+const woExerciseRouter = require('./routes/woExercise');
+const setsRouter = require('./routes/sets');
 
 const app = express();
 
@@ -48,7 +51,9 @@ app.use(function (req, res, next) {
 });
 
 app.use('/', indexRouter);
-app.use('/workouts', workoutsRouter)
+app.use('/workouts', workoutsRouter);
+app.use('/', woExerciseRouter);
+app.use('/', setsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+
+<form action="/workouts/<%= workoutId %>/exercises" method="POST">
+    <label for="exercise">
+        Select Exercise:
+    </label>
+    <select name="exerciseData" id="exercise">
+    <% exerciseData.forEach(e => { %>
+        <option value="<%= e._id %>"><%= e.name %></option>
+    <% }) %>
+    </select>
+    <button type="submit">Add</button>
+</form>
+
+<%- include('../partials/footer') %>

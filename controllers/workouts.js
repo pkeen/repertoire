@@ -1,4 +1,5 @@
 const Workout = require('../models/workout');
+const WorkoutExercise = require('../models/workoutExercise');
 
 const index = async (req, res) => {
     // Currently shows all make show user
@@ -34,7 +35,7 @@ const create = async (req, res) => {
 const edit = async ( req , res ) => {
     try {
         const workout = await Workout.findById(req.params.id);
-        res.render('workouts/show', {
+        res.render('workouts/edit', {
             title: workout.title,
             workout
         });
@@ -45,9 +46,19 @@ const edit = async ( req , res ) => {
 
 const show = async ( req, res ) => {
     try {
-        const workout = await Workout.findById(req.params.id);
+        const workout = await Workout.findById(req.params.id)
+            .populate({
+                path: 'exercises',
+                populate: {
+                    path: 'exerciseData',
+                    model: 'ExerciseData'
+                }
+            });
+            
+
         res.render('workouts/show', {
-            title: workout.title
+            title: workout.title,
+            workout,
         }); 
     } catch (err) {
         console.log(err)
@@ -58,7 +69,7 @@ const update = async (req, res) => {
     try {
         await Workout.findByIdAndUpdate(req.params.id, req.body);
         console.log(await Workout.findById(req.params.id));
-        res.redirect('/workouts')
+        res.redirect(`/workouts/${req.params.id}`);
     } catch {
         console.log(err)
     }
