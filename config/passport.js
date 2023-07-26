@@ -1,6 +1,7 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const User = require('../models/user');
+const Preference = require('../models/preference');
 
 passport.use(new GoogleStrategy(
   // Configuration object
@@ -21,11 +22,18 @@ passport.use(new GoogleStrategy(
       // Existing user found, so provide it to passport
       if (user) return cb(null, user);
       // We have a new user via OAuth!
+
+      // Create the new User
+      // Create preference document
+      const newPreference = new Preference();
+      await newPreference.save();
+
       user = await User.create({
         name: profile.displayName,
         googleId: profile.id,
         email: profile.emails[0].value,
-        avatar: profile.photos[0].value
+        avatar: profile.photos[0].value,
+        preferences: newPreference._id
       });
       return cb(null, user);
     } catch (err) {
