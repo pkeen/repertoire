@@ -8,8 +8,12 @@ const exerciseDataSchema = new mongoose.Schema({
     name: String,
     target: String,
 }, {
-    collection: "exercisedata"
+    collection: "exercisedata",
 });
+
+exerciseDataSchema.statics.getTargetOptions = function() {
+    return this.distinct('target');
+}
 
 module.exports = mongoose.model('ExerciseData', exerciseDataSchema);
 

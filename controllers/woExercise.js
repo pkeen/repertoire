@@ -3,13 +3,25 @@ const ExerciseData = require('../models/exerciseData')
 const Workout = require('../models/workout')
 
 const newWoExercise = async (req, res) => {
+    const { target } = req.query;
+    const query = {}
+    if (target) {
+        query.target = target
+    }
     const workoutId = req.params.workoutId;
-    const exerciseData = await ExerciseData.find({});
-    res.render('woExercise/new', {
-        title: 'New Exercise',
-        workoutId,
-        exerciseData
-    });
+    try {
+        const exerciseData = await ExerciseData.find(query);
+        const targets = await ExerciseData.getTargetOptions();
+        res.render('woExercise/new', {
+            title: 'New Exercise',
+            workoutId,
+            exerciseData,
+            targets
+        });
+    } catch (err) {
+        console.log(err);
+    }
+    // console.log(targets);
 }
 
 const create = async (req, res) => {

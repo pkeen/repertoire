@@ -21,6 +21,7 @@ const indexRouter = require('./routes/index');
 const workoutsRouter = require('./routes/workouts');
 const woExerciseRouter = require('./routes/woExercise');
 const setsRouter = require('./routes/sets');
+const exerciseDataRouter = require('./routes/exerciseData');
 
 const app = express();
 
@@ -54,6 +55,7 @@ app.use('/', indexRouter);
 app.use('/workouts', workoutsRouter);
 app.use('/', woExerciseRouter);
 app.use('/', setsRouter);
+app.use('/exerciseData', exerciseDataRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
