@@ -3,12 +3,14 @@
 <form action="/workouts/<%= workoutId %>/exercises" method="POST">
     <label for="target">Target:</label>
     <select name="target" id="target">
+        <option value="" selected disabled> -- Select Target -- </option>
         <% targets.forEach(target => { %>
             <option value="<%= target %>"><%= target %></option>
         <% }) %>
     </select>
     <label for="equipment">Equipment:</label>
     <select name="equipment" id="equipment">
+        <option value="" selected disabled> -- Select Equipment -- </option>
         <% equipmentArray.forEach(e => { %>
             <option value="<%= e %>"><%= e %></option>
         <% }) %>
