@@ -3,29 +3,24 @@
 <p>Email: <%= user.email %></p>
 <img src="<%= user.avatar %>" alt="<%= user.name %>'s avatar">
 <h2>Preferences</h2>
-<p><%= user.preferences %></p>
-<form action="">
+<h3>Measurements</h3>
     <div id="measurement">
     <input type="radio" name="measurement" id="metric" value="metric" <%# user.preferences.measurement === 'metric' && 'checked' %>>
     <label for="metric">Metric</label>
     <input type="radio" name="measurement" id="imperial" value="imperial" <%# user.preferences.measurement === 'imperial' && 'checked' %>>
     <label for="imperial">Imperial</label>
     </div>
-</form>
+
 
 <%- include('../partials/footer') %>
 
 <script>
-    // console.log('hello');
-    // prefernces id
+    // Vars
     const preferencesId = "<%= user.preferences._id %>";
 
     const measurement = "<%= user.preferences.measurement %>"
 
-    
-    console.log(preferencesId);
-    
-    // add event listener
+    // DOM Els
     const metric = document.getElementById('metric');
     const imperial = document.getElementById('imperial');
     
@@ -50,31 +45,11 @@
         } catch (err) {
             console.log(err);
         }
-        // const preferences = await response.json()
-        // console.log(preferences);
-        
     }
     
+    // Add Event Listeners
     metric.addEventListener('click', handleMeasurementChange);
     imperial.addEventListener('click', handleMeasurementChange);
-
-
-    // const measurement = document.getElementById('measurement');
-    // measurement.addEventListener('change', (e) => console.log(e.target.value));
-
-
-    // // display checked on correct radio
-    // const displaySelection = async () => {
-    //     // get preferences json
-    //     const preferences = await fetch(`http://localhost:3000/preferences/${preferencesId}`).then(res => res.json());
-    //     console.log(preferences);
-    //     if (preferences.measurement === 'metric') {
-    //         metric.checked = true
-    //     }
-    // }
-
-    // displaySelection()
-    // change onclick update database
 
 
 </script>
