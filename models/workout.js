@@ -45,6 +45,11 @@ const workoutSchema = new Schema({
 }, {
     timestamps: true,
     methods: {
+        formatWorkoutName() {
+            const title = this.title ? this.title : 'Workout';
+            const date = this.formatDate();
+            return `${title} @ ${date}`
+        },
         formatDateForDatetimeLocal() {
             const date = this.date;
             const year = date.getFullYear();
@@ -69,7 +74,7 @@ const workoutSchema = new Schema({
                 month: 'long', 
                 year: 'numeric' 
             });
-           return formattedTime + ' ' + formattedDate; // "5:37 PM Wed, 9 July 2021"
+           return formattedTime + ' on ' + formattedDate; // "5:37 PM Wed, 9 July 2021"
         }
     }
 });

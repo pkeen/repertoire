@@ -13,13 +13,9 @@
         return `
             <div class="col-2">
                 <div>
-                    <a href="/workouts/${workout._id}"><p>${workout.formatDate()}</p></a>
+                    <a href="/workouts/${workout._id}">${workout.formatWorkoutName()}</a>
                 </div>
-                <div>
-                    <p>${workout.title}</p>
-                    <p>${workout.user}</p>    
-                </div>
-                
+
             </div>`
         }).join("") %>
 
