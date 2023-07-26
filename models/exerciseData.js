@@ -15,5 +15,9 @@ exerciseDataSchema.statics.getTargetOptions = function() {
     return this.distinct('target');
 }
 
+exerciseDataSchema.statics.getEquipmentOptions = function() {
+    return this.distinct('equipment');
+}
+
 module.exports = mongoose.model('ExerciseData', exerciseDataSchema);
 

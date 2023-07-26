@@ -3,12 +3,14 @@ const router = express.Router();
 const ExerciseData = require('../models/exerciseData');
 
 router.get('/search', async (req, res) => {
-    const { target } = req.query;
+    const { target, equipment } = req.query;
     const query = {}
     if (target) {
         query.target = target
     }
-    const workoutId = req.params.workoutId;
+    if (equipment) {
+        query.equipment = equipment
+    }
     try {
         const exerciseData = await ExerciseData.find(query);
         res.json(exerciseData);

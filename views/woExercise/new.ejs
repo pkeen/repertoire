@@ -7,6 +7,12 @@
             <option value="<%= target %>"><%= target %></option>
         <% }) %>
     </select>
+    <label for="equipment">Equipment:</label>
+    <select name="equipment" id="equipment">
+        <% equipmentArray.forEach(e => { %>
+            <option value="<%= e %>"><%= e %></option>
+        <% }) %>
+    </select>
     <label for="exercise">
         Select Exercise:
     </label>
