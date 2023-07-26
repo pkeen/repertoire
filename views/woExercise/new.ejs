@@ -4,9 +4,16 @@
     <label for="target">Target:</label>
     <select name="target" id="target">
         <option value="" selected disabled> -- Select Target -- </option>
-        <% targets.forEach(target => { %>
-            <option value="<%= target %>"><%= target %></option>
-        <% }) %>
+        <optgroup label="Target Muscle">
+            <% targets.forEach(target => { %>
+                <option value="<%= target %>"><%= target %></option>
+            <% }) %>
+        </optgroup>
+        <optgroup label="Body Part">
+            <% bodyParts.forEach(bp => { %>
+                <option value="<%= bp %>"><%= bp %></option>
+            <% }) %>
+        </optgroup>
     </select>
     <label for="equipment">Equipment:</label>
     <select name="equipment" id="equipment">

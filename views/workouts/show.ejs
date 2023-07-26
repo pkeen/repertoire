@@ -5,9 +5,11 @@
 <h2>Exercises</h2>
 <% workout.exercises.forEach(e => { %>
     <h3><%= e.exerciseData.name %></h3>
+    <form action=""></form>
     <p>Target: <%= e.exerciseData.target.toUpperCase() %></p>
     <p>Equipment: <%= e.exerciseData.equipment %></p>
     <img src="<%= e.exerciseData.gifUrl %>" alt="Gif showing exercise">
+    <img src="/images/NB6BxGHLVRTLcO.gif" alt="Gif showing exercise">
     <ul>
         <%- e.sets.map((s, i) => {
             return `<li>Set ${i+1}. ${s.weight} | ${s.reps}</li>`

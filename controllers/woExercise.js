@@ -7,12 +7,14 @@ const newWoExercise = async (req, res) => {
     try {
         const exerciseData = await ExerciseData.find({});
         const targets = await ExerciseData.getTargetOptions();
+        const bodyParts = await ExerciseData.getBodyPartOptions();
         const equipmentArray = await ExerciseData.getEquipmentOptions();
         res.render('woExercise/new', {
             title: 'New Exercise',
             workoutId,
             exerciseData,
             targets,
+            bodyParts,
             equipmentArray
         });
     } catch (err) {

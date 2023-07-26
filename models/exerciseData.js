@@ -19,5 +19,9 @@ exerciseDataSchema.statics.getEquipmentOptions = function() {
     return this.distinct('equipment');
 }
 
+exerciseDataSchema.statics.getBodyPartOptions = function() {
+    return this.distinct('bodyPart');
+}
+
 module.exports = mongoose.model('ExerciseData', exerciseDataSchema);
 

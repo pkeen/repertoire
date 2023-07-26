@@ -9,8 +9,11 @@ const ExerciseData = require('../models/exerciseData');
 router.get('/search', async (req, res) => {
     const { target, equipment } = req.query;
     const query = {}
+    // if (target) {
+    //     query.target = target
+    // }
     if (target) {
-        query.target = target
+        query.$or = [{ target: target }, { bodyPart: target }];
     }
     if (equipment) {
         query.equipment = equipment
