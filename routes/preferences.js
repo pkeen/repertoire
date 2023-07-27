@@ -2,9 +2,6 @@ const express = require('express');
 const router = express.Router();
 // const User = require('../models/user');
 const Preference = require('../models/preference');
-// this could be a users router??
-
-// router.put('/')
 
 router.get('/preferences/:id', async (req, res) => {
     try {

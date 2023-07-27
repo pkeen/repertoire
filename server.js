@@ -6,6 +6,7 @@ const logger = require('morgan');
 const session = require('express-session');
 const passport = require('passport');
 const methodOverride = require('method-override');
+const User = require('./models/user');
 
 // Run db seed
 require('./database-helpers/seedExerciseData');
@@ -48,8 +49,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Add this middleware BELOW passport middleware
-app.use(function (req, res, next) {
-	res.locals.user = req.user;
+app.use(async function (req, res, next) {
+	res.locals.user = await User.findById(req.user).populate('preferences');
   next();
 });
 
