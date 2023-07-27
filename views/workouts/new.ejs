@@ -3,21 +3,21 @@
 <h1 class="text-center">New Workout</h1>
 <form action="/workouts" method="POST">
     <div class="mb-3 row">
-        <div class="col-12">
+        <div class="col-12 col-lg-2">
             <label for="title" class="form-label">Title</label>
         </div>
-        <div class="col-12">
+        <div class="col-12 col-lg-10">
             <input type="text" class="form-control" name="title" id="title">
         </div>
     </div>
     <div class="mb-3 row">
-        <div class="col-6 col-md-4">
+        <div class="col-6 col-lg-2">
             <label for="date" class="form-label">Date</label>
         </div>
-        <div class="col-10 col-sm-8 col-md-4">
-            <input type="datetime-local" class="form-control" name="date" id="date">
+        <div class="col-10 col-sm-10 col-lg-9">
+            <input type="datetime-local" class="form-control" name="date" id="date" value="<%= defaultDate %>">
         </div>
-        <div class="col-2 col-md-4 d-flex justify-content-end">
+        <div class="col-2 col-lg-1 d-flex justify-content-end" id="now">
             <button class="btn btn-secondary">Now</button>
         </div>
     </div>
@@ -27,3 +27,16 @@
 </form>
 
 <%- include('../partials/footer') %>
+
+<script>
+    const dateEl = document.getElementById('date');
+    const nowBtn = document.getElementById('now');
+
+    nowBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        let now = new Date();
+        dateEl.value = toLocaleDateTime(now);
+    })
+
+
+</script>

@@ -40,7 +40,11 @@ const workoutSchema = new Schema({
         ref: 'User'
     },
     title: String,
-    date: Date,
+    date: {
+        type: Date,
+        required: true,
+        default: Date.now()
+    },
     exercises: [exerciseSchema]
 }, {
     timestamps: true,

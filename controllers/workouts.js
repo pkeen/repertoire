@@ -1,5 +1,5 @@
 const Workout = require('../models/workout');
-const WorkoutExercise = require('../models/workoutExercise');
+// const WorkoutExercise = require('../models/workoutExercise');
 
 const index = async (req, res) => {
     // Currently shows all make show user
@@ -13,8 +13,10 @@ const index = async (req, res) => {
 }
 
 const newWorkout = (req, res) => {
+    const newWorkout = new Workout();
     res.render('workouts/new', {
-        title: "new workout"
+        title: "new workout",
+        defaultDate: newWorkout.formatDateForDatetimeLocal()
     });
 }
 
