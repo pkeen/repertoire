@@ -37,7 +37,7 @@ const seed = async () => {
 
     try {
         
-        // // delete data (for now)
+        // // delete data (Uncomment to delete data)
         // console.log("deleting data already in collection...");
         // await Exercise.deleteMany({}) // delete all exercises
 
@@ -51,8 +51,6 @@ const seed = async () => {
             const exercisePromises = exerciseList.map(exercise => {
                 ExerciseData.create(exercise);
             });
-
-            // console.log(exercisePromises);
 
             await Promise.all(exercisePromises);
 
