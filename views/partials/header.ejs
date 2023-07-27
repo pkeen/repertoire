@@ -4,19 +4,52 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Bootstrap css -->
+  <!-- <link rel="stylesheet" href="/stylesheets/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="/stylesheets/main.css">
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <!-- Bootstrap JS -->
+  <script src="/js/bootstrap.min.js"></script>
+
   <title><%= title %></title>
 </head>
 <body>
-  <nav>
-    <a href="/workouts">WORKOUTS</a>
-    <% if (user) { %>
-      <!-- code for user icon -->
-      <a href="/users/<%= user._id %>" id="user-nav-link"><img src="<%= user.avatar %>" alt="<%= user.name %>'s details" id="menu-avatar"></a>
-      <!-- <a href="/logout">LOG OUT</a> -->
-    <% } else { %>
-      <a href="/auth/google">LOG IN</a>
-    <% } %>
+  <nav class="navbar navbar-light bg-light navbar-expand-md">
+    <div class="container-fluid">
+
+        <a class="navbar-brand" href="/">Repertoire</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="navbar-nav d-flex align-items-center ms-auto">
+            <% if (user) { %>
+              <div class="nav-item">
+                <a class="nav-link" aria-current="page" href="/workouts">Workouts</a>
+              </div>
+            <% } %>
+            <div class="nav-item">
+              <% if (user) { %>
+                <!-- code for user icon -->
+                <a class="nav-link" href="/users/<%= user._id %>" id="user-nav-link" >
+                  <img class="rounded-circle align-self-center mr-2" id="menu-avatar" src="<%= user.avatar %>" alt="<%= user.name %>'s details" id="menu-avatar">
+                </a>
+                <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul> -->
+                <!-- <a href="/logout">LOG OUT</a> -->
+                <% } else { %>
+                  <a class=" btn btn-primary" role="button" href="/auth/google">LOG IN</a>
+              <% } %>
+              </div>
+          </div>
+        </div>
+      
+
+      </div>
+    </div>
   </nav>
-  <main class="container">
-    <h1><%= title %></h1>
+  <main class="container mt-5">
+

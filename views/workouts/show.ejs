@@ -11,7 +11,6 @@
     <p>Target: <%= e.exerciseData.target.toUpperCase() %></p>
     <p>Equipment: <%= e.exerciseData.equipment %></p>
     <img src="<%= e.exerciseData.gifUrl %>" alt="Gif showing exercise">
-    <img src="/images/NB6BxGHLVRTLcO.gif" alt="Gif showing exercise">
     <ul>
         <%- e.sets.map((s, i) => {
             const calWeight = user.preferences.measurement === 'metric' ? `${s.weight} kg` : `${Math.round((s.weight * 2.20462) * 100) / 100} lbs`;

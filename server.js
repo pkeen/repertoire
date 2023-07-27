@@ -9,7 +9,7 @@ const methodOverride = require('method-override');
 const User = require('./models/user');
 
 // Run db seed
-require('./database-helpers/seedExerciseData');
+// require('./database-helpers/seedExerciseData');
 
 require('dotenv').config();
 
@@ -31,6 +31,10 @@ const app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+
+// Use icons from bootstrap
+app.use('/icons', express.static(path.join(__dirname, 'node_modules/bootstrap-icons')))
 
 app.use(logger('dev'));
 app.use(express.json());

@@ -1,14 +1,14 @@
 <%- include('./partials/header') %>
 
-<h2>Home Page</h2>
-
 <% if (!user) { %>
-	<p>please login to continue</p>
+	<h1 class="display-1">Repertoire</h1>
+	<p class="lead">Track your reps, sets and workouts with Repertoire</p>
+
+	<!-- <p>please login to continue</p> -->
+	<a href="/auth/google"><button type="button" class="btn btn-primary">Login</button></a>	
 <% } else { %>
-	<p>Welcome, <%= user.name %> <%= user.email %></p>
-	<% if (user.avatar) { %>
-		<img src="<%= user.avatar %>" alt="<%= user.name %>'s avatar" />
-	<% } %>
+	<p>Welcome, <%= user.name %></p>
+	<a class="btn btn-primary" href="/workouts/new">Workout</a>
 <% } %>
 
 <%- include('./partials/footer') %>
