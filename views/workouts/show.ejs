@@ -1,5 +1,7 @@
 <%- include('../partials/header') %>
 
+<% console.log(user.preferences.measurement) %>
+
 <a href="/workouts/<%= workout.id %>/edit">Edit Details</a>
 
 <h2>Exercises</h2>
@@ -12,14 +14,16 @@
     <img src="/images/NB6BxGHLVRTLcO.gif" alt="Gif showing exercise">
     <ul>
         <%- e.sets.map((s, i) => {
-            return `<li>Set ${i+1}. ${s.weight} | ${s.reps}</li>`
+            const calWeight = user.preferences.measurement === 'metric' ? `${s.weight} kg` : `${Math.round((s.weight * 2.20462) * 100) / 100} lbs`;
+
+            return `<li>Set ${i+1}. ${calWeight} | ${s.reps}</li>`
         }).join("") %>
     </ul>
     <form 
         action="/workouts/<%= workout.id %>/exercises/<%= e.id %>/sets"
         method="POST"
     >
-        <label for="weight">Weight</label>
+        <label for="weight">Weight <%= user.preferences.measurement === 'metric' ? `(kg)` : `(lbs)` %></label>
         <input type="number" name="weight" id="weight">
         <label for="reps">Reps</label>
         <input type="number" name="reps" id="reps">
