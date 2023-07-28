@@ -1,8 +1,12 @@
 const Workout = require('../models/workout');
+const User = require('../models/user')
 
 const create = async (req, res) => {
     try {
-        console.log('controller action found')
+        if (req.user.preferences.measurement === 'imperial') {
+            req.body.weight = Workout.convertToKg(req.body.weight);
+        }
+        // console.log('controller action found')
         const workout = await Workout.findById(req.params.workoutId);
         const exercise = await workout.exercises.id(req.params.exerciseId)
         await exercise.sets.push(req.body);

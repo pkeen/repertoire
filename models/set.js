@@ -9,7 +9,13 @@ const setSchema = new Schema({
     reps: Number,
     weight: Number
 }, {
-    timestamps: true
+    timestamps: true,
+    statics: {
+        convertToKg(lbs) {
+            return lbs * 0.45359237
+        }
+    }
+
 });
 
 module.exports = mongoose.model('Set', setSchema);

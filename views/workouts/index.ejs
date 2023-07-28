@@ -1,24 +1,26 @@
 <%- include('../partials/header') %>
 
 <div>
-    <div class="col-2">
-        <h2>Workouts</h2>
-        
-        <div>
-            <a href="/workouts/new"><button>Add</button></a>
+    <div class="row f-flex align-items-center">
+        <div class="col-10">
+            <h2>Workouts</h2>
+        </div>
+        <div class="col-2">
+            <a class="btn btn-secondary" role="button" href="/workouts/new">Add</a>
         </div>
     </div>
 
-    <%- workouts.map(workout => {
-        return `
-            <div class="col-2">
-                <div>
-                    <a href="/workouts/${workout._id}">${workout.formatWorkoutName()}</a>
-                </div>
+    <div class="row">
+        <%- workouts.map(workout => {
+            return `
+                <div class="col-12">
+                    <div>
+                        <a href="/workouts/${workout._id}">${workout.formatWorkoutName()}</a>
+                    </div>
 
-            </div>`
-        }).join("") %>
-
+                </div>`
+            }).join("") %>
+    </div>
 
 </div>
 

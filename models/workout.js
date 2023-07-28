@@ -80,6 +80,11 @@ const workoutSchema = new Schema({
             });
            return formattedTime + ' on ' + formattedDate; // "5:37 PM Wed, 9 July 2021"
         }
+    },
+    statics: {
+        convertToKg(lbs) {
+            return lbs * 0.45359237
+        }
     }
 });
 
