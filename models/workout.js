@@ -11,7 +11,12 @@ const setSchema = new Schema({
     reps: Number,
     weight: Number
 }, {
-    timestamps: true
+    timestamps: true,
+    methods: {
+        getWeight(measurement) {
+            return measurement === 'metric' ? `${this.weight} kg` : `${Math.round((this.weight * 2.20462) * 100) / 100} lbs`;
+        }
+    }
 });
 
 
@@ -29,7 +34,7 @@ const exerciseSchema = new Schema({
     sets: [setSchema]
 
 }, {
-    timestamps: true
+    timestamps: true,
 });
 
 

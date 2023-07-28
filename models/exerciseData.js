@@ -9,6 +9,23 @@ const exerciseDataSchema = new mongoose.Schema({
     target: String,
 }, {
     collection: "exercisedata",
+    methods: {
+        formatName() {
+            return this.name.split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+        },
+        formatEquipment() {
+            return this.equipment.split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+        },
+        formatTarget() {
+            return this.target.split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+        }
+    }
 });
 
 exerciseDataSchema.statics.getTargetOptions = function() {

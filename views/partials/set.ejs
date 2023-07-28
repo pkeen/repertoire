@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col d-flex justify-content-center">
+        Set <%= i %>.
+    </div>
+    <% if (s.weight) { %>
+        <div class="col d-flex justify-content-center">
+            <%= s.getWeight(user.preferences.measurement) %>
+        </div>
+    <% } %>
+    <div class="col d-flex justify-content-center">
+        <%= s.reps %> reps
+    </div>
+</div>
