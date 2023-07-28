@@ -8,6 +8,12 @@ router.put('/workouts/:workoutId/exercises/:id', exercisesCtrl.update);
 //     console.log('found');
 // } );
 
+// DELETE exercises/:id
+router.delete('/workouts/:workoutId/exercises/:id', exercisesCtrl.delete);
+// router.delete('/workouts/:workoutId/exercises/:id', (req, res) => {
+//     console.log('found');
+// });
+
 // // GET new
 // router.get('/workouts/:workoutId/exercises/new', woExerciseCtlr.new)
 

@@ -3,11 +3,7 @@ const Schema = mongoose.Schema;
 
 /* Set */
 const setSchema = new Schema({
-    // fk workoutExercise
-    // workoutExercise: { //
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'WorkoutExercise'
-    // },
+
     reps: Number,
     weight: Number
 }, {
