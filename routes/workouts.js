@@ -21,7 +21,8 @@ router.put('/:id', ensureLoggedIn, workoutsCtlr.update);
 // POST
 router.post('/', ensureLoggedIn, workoutsCtlr.create);
 
-
+// DELETE 
+router.delete('/:id', ensureLoggedIn, workoutsCtlr.delete);
 
 
 module.exports = router;

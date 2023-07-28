@@ -77,11 +77,21 @@ const update = async (req, res) => {
     }
 }
 
+const deleteWorkout = async (req, res) => {
+    try {
+        await Workout.findByIdAndDelete(req.params.id);
+        res.redirect('/workouts');
+    } catch(err) {
+        console.log(err)
+    }
+}
+
 module.exports = {
     index, 
     create,
     new: newWorkout, 
     edit,
     show, 
-    update
+    update,
+    delete: deleteWorkout
 }
