@@ -1,4 +1,5 @@
 const Workout = require('../models/workout');
+const ExerciseData = require('../models/exerciseData');
 // const WorkoutExercise = require('../models/workoutExercise');
 
 const index = async (req, res) => {
@@ -56,11 +57,18 @@ const show = async ( req, res ) => {
                     model: 'ExerciseData'
                 }
             });
-            
+        const targets = await ExerciseData.getTargetOptions();
+        const bodyParts = await ExerciseData.getBodyPartOptions();
+        const equipment = await ExerciseData.getEquipmentOptions();
+        const exerciseData = await ExerciseData.find({});
 
         res.render('workouts/show', {
             title: workout.title,
             workout,
+            targets,
+            bodyParts,
+            equipment,
+            exerciseData
         }); 
     } catch (err) {
         console.log(err)

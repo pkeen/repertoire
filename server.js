@@ -20,7 +20,7 @@ require('./config/passport');
 // Routers
 const indexRouter = require('./routes/index');
 const workoutsRouter = require('./routes/workouts');
-const woExerciseRouter = require('./routes/woExercise');
+const exerciseRouter = require('./routes/exercise');
 const setsRouter = require('./routes/sets');
 const exerciseDataRouter = require('./routes/exerciseData');
 const usersRouter = require('./routes/users');
@@ -60,7 +60,7 @@ app.use(async function (req, res, next) {
 
 app.use('/', indexRouter);
 app.use('/workouts', workoutsRouter);
-app.use('/', woExerciseRouter);
+app.use('/', exerciseRouter);
 app.use('/', setsRouter);
 app.use('/exerciseData', exerciseDataRouter);
 app.use('/users', usersRouter);

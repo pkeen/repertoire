@@ -1,0 +1,68 @@
+<!-- Modal -->
+<div class="modal fade" id="editExerciseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Change Exercise</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="/workouts/<%= workout.id %>/exercises/<%= e.id %>?_method=PUT" method="POST">
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-2">
+                    <label class="form-label" for="target">Target:</label>
+                </div>
+                <div class="col-10">
+                    <select class="form-control" name="target" id="target">
+                        <option value="" selected disabled> -- Select Target -- </option>
+                        <optgroup label="Target Muscle">
+                            <% targets.forEach(target => { %>
+                                <option value="<%= target %>"><%= target %></option>
+                            <% }) %>
+                        </optgroup>
+                        <optgroup label="Body Part">
+                            <% bodyParts.forEach(bp => { %>
+                                <option value="<%= bp %>"><%= bp %></option>
+                            <% }) %>
+                        </optgroup>
+                    </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-2">
+                    <label class="form-label" for="equipment">Equipment:</label>
+                </div>
+                <div class="col-10">
+                    <select class="form-control" name="equipment" id="equipment">
+                        <option value="" selected disabled> -- Select Equipment -- </option>
+                        <% equipment.forEach(e => { %>
+                            <option value="<%= e %>"><%= e %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <label class="form-label" for="exercise">
+                            Select Exercise:
+                        </label>
+                    </div>
+                    <div class="col-10">
+                        <select class="form-control" name="exerciseData" id="exercise">
+                            <% exerciseData.forEach(e => { %>
+                                <option value="<%= e._id %>"><%= e.name %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/addExercise.js"></script>
