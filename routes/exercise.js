@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const exercisesCtrl = require('../controllers/exercise');
 
+// POST 
+router.post('/workouts/:workoutId/exercises', exercisesCtrl.create);
+
 // PUT
 router.put('/workouts/:workoutId/exercises/:id', exercisesCtrl.update);
 // router.put('/workouts/:workoutId/exercises/:id', (req, res) => {

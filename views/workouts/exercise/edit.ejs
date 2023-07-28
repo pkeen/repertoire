@@ -8,53 +8,57 @@
         </div>
         <form action="/workouts/<%= workout.id %>/exercises/<%= e.id %>?_method=PUT" method="POST">
             <div class="modal-body">
-              <div class="row">
-                <div class="col-2">
-                    <label class="form-label" for="target">Target:</label>
-                </div>
-                <div class="col-10">
-                    <select class="form-control" name="target" id="target">
-                        <option value="" selected disabled> -- Select Target -- </option>
-                        <optgroup label="Target Muscle">
-                            <% targets.forEach(target => { %>
-                                <option value="<%= target %>"><%= target %></option>
-                            <% }) %>
-                        </optgroup>
-                        <optgroup label="Body Part">
-                            <% bodyParts.forEach(bp => { %>
-                                <option value="<%= bp %>"><%= bp %></option>
-                            <% }) %>
-                        </optgroup>
-                    </select>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-2">
-                    <label class="form-label" for="equipment">Equipment:</label>
-                </div>
-                <div class="col-10">
-                    <select class="form-control" name="equipment" id="equipment">
-                        <option value="" selected disabled> -- Select Equipment -- </option>
-                        <% equipment.forEach(e => { %>
-                            <option value="<%= e %>"><%= e %></option>
-                        <% }) %>
-                    </select>
-                </div>
                 <div class="row">
-                    <div class="col-2">
+                    <div class="col d-flex justify-content-center"><h5>Filters</h5></div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-12 col-sm-2">
+                        <label class="form-label" for="target">Target:</label>
+                    </div>
+                    <div class="col-12 col-sm-10">
+                        <select class="form-select form-select-sm" name="target" id="target">
+                            <option value="" selected disabled> -- Select Target -- </option>
+                            <optgroup label="Target Muscle">
+                                <% targets.forEach(target => { %>
+                                    <option value="<%= target %>"><%= target %></option>
+                                <% }) %>
+                            </optgroup>
+                            <optgroup label="Body Part">
+                                <% bodyParts.forEach(bp => { %>
+                                    <option value="<%= bp %>"><%= bp %></option>
+                                <% }) %>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-12 col-sm-2">
+                        <label class="form-label" for="equipment">Equipment:</label>
+                    </div>
+                    <div class="col-12 col-sm-10">
+                        <select class="form-select form-select-sm" name="equipment" id="equipment">
+                            <option value="" selected disabled> -- Select Equipment -- </option>
+                            <% equipment.forEach(e => { %>
+                                <option value="<%= e %>"><%= e %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+                <hr>
+                <div class="row mb-2">
+                    <div class="col-12 col-sm-2">
                         <label class="form-label" for="exercise">
                             Select Exercise:
                         </label>
                     </div>
-                    <div class="col-10">
-                        <select class="form-control" name="exerciseData" id="exercise">
+                    <div class="col-12 col-sm-10">
+                        <select class="form-select" name="exerciseData" id="exercise">
                             <% exerciseData.forEach(e => { %>
                                 <option value="<%= e._id %>"><%= e.name %></option>
                             <% }) %>
                         </select>
                     </div>
                 </div>
-            </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
