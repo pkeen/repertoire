@@ -3,7 +3,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Change Exercise</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Add Exercise</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -15,14 +15,14 @@
                     <label class="form-label" for="target">Target:</label>
                 </div>
                 <div class="col-12 col-sm-10">
-                    <select class="form-select form-select-sm" name="target" id="target">
+                    <select class="form-select form-select-sm" name="target" id="targetNew">
                         <option value="" selected disabled> -- Select Target -- </option>
                         <optgroup label="Target Muscle">
                             <% targets.forEach(target => { %>
                                 <option value="<%= target %>"><%= target.split(' ')
                                         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
                                         .join(' '); %></option>
-                                <% }) %>
+                            <% }) %>
                         </optgroup>
                         <optgroup label="Body Part">
                                 <% bodyParts.forEach(bp => { %>
@@ -39,7 +39,7 @@
                     <label class="form-label" for="equipment">Equipment:</label>
                 </div>
                 <div class="col-12 col-sm-10">
-                    <select class="form-select form-select-sm" name="equipment" id="equipment">
+                    <select class="form-select form-select-sm" name="equipment" id="equipmentNew">
                         <option value="" selected disabled> -- Select Equipment -- </option>
                         <% equipment.forEach(e => { %>
                             <option value="<%= e %>"><%= e.split(' ')
@@ -58,7 +58,7 @@
                         </label>
                     </div>
                     <div class="col-12 col-sm-10">
-                        <select class="form-select" name="exerciseData" id="exercise">
+                        <select class="form-select" name="exerciseData" id="exerciseNew">
                             <% exerciseData.forEach(e => { %>
                                 <option value="<%= e._id %>"><%= e.name.split(' ')
                                     .map(word => word.charAt(0).toUpperCase() + word.slice(1))

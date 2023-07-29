@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="editExerciseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editExerciseModal<%= i %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -16,16 +16,20 @@
                         <label class="form-label" for="target">Target:</label>
                     </div>
                     <div class="col-12 col-sm-10">
-                        <select class="form-select form-select-sm" name="target" id="target">
+                        <select class="form-select form-select-sm" name="target" id="target<%= i %>">
                             <option value="" selected disabled> -- Select Target -- </option>
                             <optgroup label="Target Muscle">
                                 <% targets.forEach(target => { %>
-                                    <option value="<%= target %>"><%= target %></option>
+                                    <option value="<%= target %>"><%= target.split(' ')
+                                            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                                            .join(' '); %></option>
                                 <% }) %>
                             </optgroup>
                             <optgroup label="Body Part">
                                 <% bodyParts.forEach(bp => { %>
-                                    <option value="<%= bp %>"><%= bp %></option>
+                                    <option value="<%= bp %>"><%= bp.split(' ')
+                                        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                                        .join(' '); %></option>
                                 <% }) %>
                             </optgroup>
                         </select>
@@ -36,11 +40,13 @@
                         <label class="form-label" for="equipment">Equipment:</label>
                     </div>
                     <div class="col-12 col-sm-10">
-                        <select class="form-select form-select-sm" name="equipment" id="equipment">
+                        <select class="form-select form-select-sm" name="equipment" id="equipment<%= i %>">
                             <option value="" selected disabled> -- Select Equipment -- </option>
-                            <% equipment.forEach(e => { %>
-                                <option value="<%= e %>"><%= e %></option>
-                            <% }) %>
+                                <% equipment.forEach(e => { %>
+                                    <option value="<%= e %>"><%= e.split(' ')
+                                        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                                        .join(' '); %></option>
+                                <% }) %>
                         </select>
                     </div>
                 </div>
@@ -52,9 +58,11 @@
                         </label>
                     </div>
                     <div class="col-12 col-sm-10">
-                        <select class="form-select" name="exerciseData" id="exercise">
+                        <select class="form-select" name="exerciseData" id="exercise<%= i %>">
                             <% exerciseData.forEach(e => { %>
-                                <option value="<%= e._id %>"><%= e.name %></option>
+                                <option value="<%= e._id %>"><%= e.name.split(' ')
+                                    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                                    .join(' '); %></option>
                             <% }) %>
                         </select>
                     </div>
@@ -69,4 +77,65 @@
     </div>
   </div>
 
-  <script src="/js/addExercise.js"></script>
+  <script>
+
+    (() => {
+    let i = `<%= i %>`
+    let targetSelect = document.getElementById(`target${i}`);
+    let equipmentSelect = document.getElementById(`equipment${i}`);
+    
+    let targetVal;
+    let equipmentVal;
+    
+    let queryRequest = async (targetVal, equipmentVal) => {
+        let query = []
+        if (targetVal) {
+            query.push(`target=${targetVal}`);
+        }
+        if (equipmentVal) {
+            query.push(`equipment=${equipmentVal}`)
+        }
+    
+        // console.log(query.join("&"));
+        const endpoint = 'http://localhost:3000/exerciseData/search'
+        const url = endpoint + '?' + query.join("&");
+    
+        try {
+            const exerciseData = await fetch(url).then(res => res.json());
+    
+            // clear existing data in select
+            const exerciseSelect = document.getElementById(`exercise${i}`);
+            exerciseSelect.innerHTML = '';
+    
+            // poplate with new data
+            exerciseData.forEach(exercise => {
+                const option = document.createElement('option');
+                option.value = exercise._id;
+                option.text = exercise.name;
+                exerciseSelect.append(option);
+            })
+    
+        } catch (err) {
+            console.log(err);
+        }
+    }
+    
+    let handleTargetChange = (e) => {
+    
+        targetVal = e.target.value;
+        console.log('targetVal: ', targetVal)
+    
+        queryRequest(targetVal, equipmentVal);
+    } 
+    
+    let handleEquipmentChange = (e) => {
+        equipmentVal = e.target.value;
+        queryRequest(targetVal, equipmentVal)
+    }
+    
+    targetSelect.addEventListener('change', handleTargetChange);
+    equipmentSelect.addEventListener('change', handleEquipmentChange);
+})()
+
+
+  </script>

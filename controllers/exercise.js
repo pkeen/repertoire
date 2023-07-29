@@ -5,6 +5,7 @@ const update = async (req, res) => {
     try {
         const workout = await Workout.findById(req.params.workoutId);
         const exercise = await workout.exercises.id(req.params.id);
+        console.log(exercise.id);
         exercise.exerciseData = req.body.exerciseData;
         await workout.save();
         res.redirect(`/workouts/${workout.id}`);
