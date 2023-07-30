@@ -55,7 +55,7 @@ body {
 }
 
 .exercise-border-wrap {
-    background: linear-gradient(to right, red, purple);
+    /* background: linear-gradient(to right, red, purple); */
     border-radius: 5rem;
     padding: .5rem;
 }
@@ -93,3 +93,11 @@ body {
 /* div {
     padding-bottom: .25rem;
 } */
+
+
+.workout {
+    /* border: 3px solid red; */
+    border-radius: 5rem;
+    background: white;
+    padding: 1rem;
+}

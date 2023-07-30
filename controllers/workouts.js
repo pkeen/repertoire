@@ -6,7 +6,20 @@ const index = async (req, res) => {
     // Currently shows all make show user
     const user = req.user;
     console.log(`user: ${user}`);
-    const workouts = await Workout.find({});
+    const workouts = await Workout.find({})
+        .populate({
+            path: 'exercises',
+            populate: {
+                path: 'exerciseData',
+                model: 'ExerciseData'
+            }
+        })
+        .populate({
+            path: 'exercises',
+            populate: {
+                path: 'sets'
+            }
+        })
     res.render('workouts/index', {
         title: "Workouts",
         workouts

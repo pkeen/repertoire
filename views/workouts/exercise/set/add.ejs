@@ -1,0 +1,26 @@
+<form 
+    action="/workouts/<%= workout.id %>/exercises/<%= e.id %>/sets"
+    method="POST"
+>
+    <div class="row justify-content-center mt-1">
+        <div class="col-6 col-sm-6 col-md-3 col-lg-3 text-end d-flex align-items-center justify-content-end justify-content-lg-center">
+            <label class="form-label text-set-dark" for="weight">Weight <%= user.preferences.measurement === 'metric' ? `(kg)` : `(lbs)` %></label>
+        </div>
+        <div class="col-6 col-sm-6 col-md-3 col-lg-3 mt-1">
+            <input class="form-control set-input" type="number" name="weight" id="weight">
+        </div>
+    <!-- </div> -->
+    <!-- <div class="row text-end justify-content-center align-items-center mt-1"> -->
+        <div class="col-6 col-sm-6 col-md-3 col-lg-3 d-flex align-items-center justify-content-end justify-content-lg-center">
+            <label class="form-label text-set-dark" for="reps">Reps</label>
+        </div>
+        <div class="col-6 col-sm-6 col-md-3 col-lg-3">
+            <input class="form-control set-input" type="number" name="reps" id="reps">
+        </div>
+    </div>
+    <div class="row mt-1">
+        <div class="col d-flex justify-content-center align-items-center">
+            <button class="btn btn-set" type="submit">Add</button>
+        </div>
+    </div>
+</form>

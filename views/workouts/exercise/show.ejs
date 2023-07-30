@@ -1,11 +1,11 @@
-<div class="exercise-border-wrap mt-3">
+<div class="exercise-box mt-3">
     <div class="exercise-inner-white-border">
         <div class="container exercise">
             <div class="row">
                 <div class="col d-flex justify-content-center">
                     <div class="pe-1">
                         <button 
-                            class="btn btn-sm btn-secondary"
+                            class="btn btn-sm btn-primary"
                             type="button"
                             data-bs-toggle="modal"
                             data-bs-target="#editExerciseModal<%= i %>"
@@ -15,7 +15,7 @@
                             </svg>
                         </button>
                         <button 
-                            class="btn btn-sm btn-secondary"
+                            class="btn btn-sm btn-primary"
                             type="button"
                             data-bs-toggle="modal" data-bs-target="#deleteExerciseModal<%= i %>"
                             >
@@ -31,18 +31,18 @@
             <%- include('./delete', {e, i}) %>
 
             <div class="row">
-                <h3 class="text-center"><%= e.exerciseData.formatName() %></h3>
+                <h3 class="text-center text-primary-dark"><%= e.exerciseData.formatName() %></h3>
             </div>
             <div class="row">
                 <div class="col-6 d-flex flex-column justify-content-center">
                     <div class="row">
                         <div class="col-12 d-flex justify-content-center align-items-center">
-                            <p>Target: <%= e.exerciseData.formatTarget() %></p>
+                            <p class="text-primary-dark">Target: <%= e.exerciseData.formatTarget() %></p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 d-flex justify-content-center align-items-center">
-                            <p>Equipment: <%= e.exerciseData.formatEquipment() %></p>
+                            <p class="text-primary-dark">Equipment: <%= e.exerciseData.formatEquipment() %></p>
                         </div>
                     </div>
                 </div>
@@ -56,49 +56,24 @@
             <hr>
             <div class="row">
                 <div class="col d-flex justify-content-center align-items-center">
-                    <h4>Sets</h4>
+                    <h4 class="text-set-dark">Sets</h4>
                 </div>
             </div>
             <!-- <form action=""></form> add delete/edit-->
             <div class="row">
                 <div class="col">
                     <% e.sets.forEach((s, i) => { %>
-                        <%- include('./set', {s, i: i, user}) %>
+                        <%- include('./set/set', {s, i: i, user}) %>
                     <% }) %>
                 </div>
             </div>
             <div class="row mt-2">
-                <div class="col d-flex justify-content-center align-items-center">
+                <div class="col d-flex justify-content-center align-items-center text-set-dark">
                     <h5>Add Set</h5>
                 </div>
             </div>
             <div class="row">
-                <form 
-                    action="/workouts/<%= workout.id %>/exercises/<%= e.id %>/sets"
-                    method="POST"
-                >
-                    <div class="row justify-content-center mt-1">
-                        <div class="col-6 col-sm-6 col-md-3 col-lg-3 text-end d-flex align-items-center justify-content-end justify-content-lg-center">
-                            <label class="form-label" for="weight">Weight <%= user.preferences.measurement === 'metric' ? `(kg)` : `(lbs)` %></label>
-                        </div>
-                        <div class="col-6 col-sm-6 col-md-3 col-lg-3 mt-1">
-                            <input class="form-control" type="number" name="weight" id="weight">
-                        </div>
-                    <!-- </div> -->
-                    <!-- <div class="row text-end justify-content-center align-items-center mt-1"> -->
-                        <div class="col-6 col-sm-6 col-md-3 col-lg-3 d-flex align-items-center justify-content-end justify-content-lg-center">
-                            <label class="form-label" for="reps">Reps</label>
-                        </div>
-                        <div class="col-6 col-sm-6 col-md-3 col-lg-3">
-                            <input class="form-control" type="number" name="reps" id="reps">
-                        </div>
-                    </div>
-                    <div class="row mt-1">
-                        <div class="col d-flex justify-content-center align-items-center">
-                            <button class="btn btn-secondary" type="submit">Add</button>
-                        </div>
-                    </div>
-                </form>
+                <%- include('./set/add') %>
             </div>
         </div>
     </div>

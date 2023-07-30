@@ -1,27 +1,53 @@
 <%- include('../partials/header') %>
 
-<div>
-    <div class="row f-flex align-items-center">
-        <div class="col-10">
-            <h2>Workouts</h2>
+<section id="workouts">
+    <div class="row f-flex align-items-center mb-2">
+        <div class="col-12 d-flex justify-content-center">
+            <h1 class="text-workout-dark">Workouts</h2>
         </div>
-        <div class="col-2">
-            <a class="btn btn-secondary" role="button" href="/workouts/new">Add</a>
+        <div class="col-12 d-flex justify-content-center">
+            <a class="btn btn-workout" role="button" href="/workouts/new">New</a>
         </div>
     </div>
 
-    <div class="row">
-        <%- workouts.map(workout => {
-            return `
-                <div class="col-12">
-                    <div>
-                        <a href="/workouts/${workout._id}">${workout.formatWorkoutName()}</a>
+    <div>
+        <% workouts.forEach(workout => { %>
+            <a href="/workouts/<%= workout.id %>">
+                <div class="row workout-box mb-2">
+                    <div class="exercise-inner-white-border">
+                        <div class="container workout">
+                            <div class="row">
+                                <div class="col d-flex justify-content-center">
+                                    <a class="text-workout-dark" href="/workouts/<%= workout.id %>"> <%= workout.formatWorkoutName() %></a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <% workout.exercises.forEach(e => { %>
+                                    <div class="row">
+                                        <div class="col ms-5">
+                                            <div class="row">
+                                                <p class="text-primary-dark"> <%= e.exerciseData.formatName() %></p>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col ms-5">
+                                                    <% e.sets.forEach(s => { %>
+                                                        <div class="row">
+                                                            <p class="text-set-dark"> Weight: <%= s.weight %> | Reps: <%= s.reps %></p>
+                                                        </div>
+                                                    <% }) %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <% }) %>
+                            </div>
+                        </div>
                     </div>
-
-                </div>`
-            }).join("") %>
+                </div>
+            </a>
+        <% }) %>
     </div>
 
-</div>
+</section>
 
 <%- include('../partials/footer') %>

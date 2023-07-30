@@ -1,6 +1,83 @@
 // Option A: Include all of Bootstrap
 
 // Include any default variable overrides here (though functions won't be available)
+// Define custom color variables
+$primary:    #ee4b2b; 
+$secondary:  #6c757d; 
+$success:    #28a745; 
+$info:       #17a2b8; 
+$warning:    #ffc107; 
+$danger:     #dc3545; 
+$light:      #f8f9fa; 
+$dark:       #343a40; 
+// Additional custom color variables
+$workout:   #30c9ad; 
+$set:       #ab72c6; 
+
+
+// Custom classes
+
+.text-workout-dark {
+    color: darken($workout, 20%) !important; // Set darker color
+}
+
+.text-primary-dark {
+    color: darken($primary, 20%) !important;
+}
+
+.text-set-dark {
+    color: darken($set, 20%) !important;
+}
+
+.set-input:focus {
+    border-color: $set !important;
+    box-shadow: 0 0 0 0.2rem rgba($set, .25) !important;
+}
+
+.btn-workout {
+    color: white !important; // Set text color
+    background-color: $workout !important; // Set background color
+
+    &:hover {
+        background-color: darken($workout, 10%) !important; // Darken the background color when hovering over the button
+    }
+
+    &:active {
+        background-color: darken($workout, 20%) !important; // Darken the background color when button is active
+    }
+}
+
+.btn-set {
+    color: white !important; // Set text color
+    background-color: $set !important; // Set background color
+
+    &:hover {
+        background-color: darken($set, 10%) !important; // Darken the background color when hovering over the button
+    }
+
+    &:active {
+        background-color: darken($set, 20%) !important; // Darken the background color when button is active
+    }
+}
+
+// Primary Gradient Background
+@mixin gradient-background($start-color, $end-color) {
+    background: linear-gradient(to right, $start-color, $end-color);
+    padding: .5rem; // Spacing around the white content box
+}
+
+// Use the gradient border on your exercise components
+.exercise-box {
+    @include gradient-background(#ee4b2b, darken(#ee4b2b, 20%)); 
+    border-radius: 5rem;
+    padding: .5rem;
+}
+
+.workout-box {
+    @include gradient-background(#30c9ad, darken(#30c9ad, 20%));
+    border-radius: 5rem;
+    padding: .5rem;
+}
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
