@@ -9,4 +9,7 @@ const ensureLoggedIn = require('../config/ensureLoggedIn');
 // POST
 router.post('/workouts/:workoutId/exercises/:exerciseId/sets', ensureLoggedIn, setsCtrl.create)
 
+// DELETE
+router.delete('/workouts/:workoutId/exercises/:exerciseId/sets/:id', ensureLoggedIn, setsCtrl.delete)
+
 module.exports = router;

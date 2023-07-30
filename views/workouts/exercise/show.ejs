@@ -63,7 +63,7 @@
             <div class="row">
                 <div class="col">
                     <% e.sets.forEach((s, i) => { %>
-                        <%- include('./set/set', {s, i: i, user}) %>
+                        <%- include('./set/set', {s, i: i, user, workout, e}) %>
                     <% }) %>
                 </div>
             </div>

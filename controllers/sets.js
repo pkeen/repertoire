@@ -17,6 +17,20 @@ const create = async (req, res) => {
     }
 }
 
+const deleteSet = async (req, res) => {
+    try {
+        const workout = await Workout.findById(req.params.workoutId);
+        const exercise = await workout.exercises.id(req.params.exerciseId);
+        const set = await exercise.sets.id(req.params.id);
+        await set.deleteOne();
+        await workout.save();
+        res.redirect(`/workouts/${req.params.workoutId}`);
+    } catch (err) {
+        console.log(err)
+    }
+}
+
 module.exports = {
-    create
+    create,
+    delete: deleteSet
 }
