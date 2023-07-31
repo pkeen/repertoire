@@ -5,8 +5,9 @@ const ExerciseData = require('../models/exerciseData');
 const index = async (req, res) => {
     // Currently shows all make show user
     const user = req.user;
+    const newWorkout = new Workout();
     console.log(`user: ${user}`);
-    const workouts = await Workout.find({})
+    const workouts = await Workout.find({user: user.id})
         .populate({
             path: 'exercises',
             populate: {
@@ -20,9 +21,11 @@ const index = async (req, res) => {
                 path: 'sets'
             }
         })
+        .sort({date: 'desc'})
     res.render('workouts/index', {
         title: "Workouts",
-        workouts
+        workouts,
+        defaultDate: newWorkout.formatDateForDatetimeLocal()
     });
 }
 

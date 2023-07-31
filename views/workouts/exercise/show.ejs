@@ -61,7 +61,7 @@
             </div>
             <!-- <form action=""></form> add delete/edit-->
             <div class="row">
-                <div class="col">
+                <div class="col" id="exercise<%= i %>-sets">
                     <% e.sets.forEach((s, i) => { %>
                         <%- include('./set/set', {s, i: i, user, workout, e}) %>
                     <% }) %>
@@ -73,7 +73,7 @@
                 </div>
             </div>
             <div class="row">
-                <%- include('./set/add') %>
+                <%- include('./set/add', {e, i}) %>
             </div>
         </div>
     </div>

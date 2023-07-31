@@ -48,8 +48,8 @@ It also uses an API [ExerciseAPI](https://rapidapi.com/justin-WFnsXH_t6/api/exer
 * Use the exerciseDB API ✅
 
 ## Stretch Goals
-* A nicer front-end maybe using a library
-    * Bringing views together, being able to add workout, exercise and set at the same time
+* A nicer front-end maybe using a library ✅
+    * Bringing views together, being able to add workout, exercise and set at the same time ✅
 * User metric tracking, e.g BMI, progress pics, body fat %
 * Built in login, or more login options
 * Users able to save workout templates to quickly get workouts
@@ -58,12 +58,13 @@ It also uses an API [ExerciseAPI](https://rapidapi.com/justin-WFnsXH_t6/api/exer
 * Workouts index view toggle calender view
 
 ## Work List
-* Improve Styling
+* Improve Styling ✅
 * KG to Lbs calculation - front end? ✅
     * Preference Model ✅
 * Dont include reps on certain exercises?
 * Dont include weight on certain exercises i.e. body weight exercises
-* Add default date of now and display in UI
-* Download all gifs
+* Add default date of now and display in UI ✅
+* Download all gifs ✅
+* Make sets update clientside - no redirect
 
 

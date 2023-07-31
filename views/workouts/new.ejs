@@ -1,42 +1,40 @@
-<%- include('../partials/header') %>
 
-<h1 class="text-center">New Workout</h1>
-<form action="/workouts" method="POST">
-    <div class="mb-3 row">
-        <div class="col-12 col-lg-2">
-            <label for="title" class="form-label">Title</label>
+<div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New Workout</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="col-12 col-lg-10">
-            <input type="text" class="form-control" name="title" id="title">
-        </div>
+        <form action="/workouts" method="POST">
+            <div class="modal-body">
+            <!-- modal body -->
+                <div class="mb-3 row">
+                    <div class="col-12 col-lg-2">
+                        <label for="title" class="form-label">Title</label>
+                    </div>
+                    <div class="col-12 col-lg-10">
+                        <input type="text" class="form-control" name="title" id="title">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <div class="col-12 col-lg-2">
+                        <label for="date" class="form-label">Date</label>
+                    </div>
+                    <div class="col-12 col-lg-10">
+                        <input type="datetime-local" class="form-control" name="date" id="date" value="<%= defaultDate %>">
+                    </div>
+                    
+                </div>
+                <!-- <div class="col-12 d-flex justify-content-center">
+                    <button class="btn btn-primary" type="submit">Save</button>
+                </div> -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-workout" data-bs-dismiss="modal">Save changes</button>
+            </div>
+        </form>
+      </div>
     </div>
-    <div class="mb-3 row">
-        <div class="col-6 col-lg-2">
-            <label for="date" class="form-label">Date</label>
-        </div>
-        <div class="col-10 col-sm-10 col-lg-9">
-            <input type="datetime-local" class="form-control" name="date" id="date" value="<%= defaultDate %>">
-        </div>
-        <div class="col-2 col-lg-1 d-flex justify-content-end" id="now">
-            <button class="btn btn-secondary">Now</button>
-        </div>
-    </div>
-    <div class="col-12 d-flex justify-content-center">
-        <button class="btn btn-primary" type="submit">Save</button>
-    </div>
-</form>
-
-<%- include('../partials/footer') %>
-
-<script>
-    const dateEl = document.getElementById('date');
-    const nowBtn = document.getElementById('now');
-
-    nowBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        let now = new Date();
-        dateEl.value = toLocaleDateTime(now);
-    })
-
-
-</script>
+</div>

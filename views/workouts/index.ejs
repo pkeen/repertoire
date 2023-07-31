@@ -6,9 +6,18 @@
             <h1 class="text-workout-dark">Workouts</h2>
         </div>
         <div class="col-12 d-flex justify-content-center">
-            <a class="btn btn-workout" role="button" href="/workouts/new">New</a>
+            <button 
+                class="btn btn-sm btn-workout"
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#newModal"
+            >
+                New
+            </button>
         </div>
     </div>
+
+    <%- include('./new') %>
 
     <div>
         <% workouts.forEach((workout, i) => { %>
@@ -20,9 +29,9 @@
                                 <div class="col d-flex justify-content-center">
                                     <a class="text-workout-dark" href="/workouts/<%= workout.id %>"> <%= workout.formatWorkoutName() %></a>
                                 </div>
-                                <div class="cold d-flex justify-content-center pe-1">
+                                <div class="cold d-flex justify-content-center m-1">
                                     <a
-                                        class="btn btn-sm btn-workout"
+                                        class="btn btn-sm btn-workout me-1"
                                         role="button"
                                         href="/workouts/<%= workout.id %>"
                                     >

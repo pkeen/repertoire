@@ -1,13 +1,19 @@
 const Workout = require('../models/workout');
 const User = require('../models/user')
+const isOwner = require('../config/isOwner')
 
 const create = async (req, res) => {
     try {
+        const workout = await Workout.findById(req.params.workoutId);
+        console.log(req.user);
+        console.log(workout);
+        if (!isOwner(req.user._id, workout)) {
+            return res.status(401).json({message: "Unauthorized"}); // 401 is Unauthorized HTTP status code
+        }
         if (req.user.preferences.measurement === 'imperial') {
             req.body.weight = Workout.convertToKg(req.body.weight);
         }
         // console.log('controller action found')
-        const workout = await Workout.findById(req.params.workoutId);
         const exercise = await workout.exercises.id(req.params.exerciseId)
         await exercise.sets.push(req.body);
         await workout.save();
@@ -20,6 +26,9 @@ const create = async (req, res) => {
 const deleteSet = async (req, res) => {
     try {
         const workout = await Workout.findById(req.params.workoutId);
+        if (!isOwner(req.user._id, workout)) {
+            return res.status(401).json({message: "Unauthorized"}); // 401 is Unauthorized HTTP status code
+        }
         const exercise = await workout.exercises.id(req.params.exerciseId);
         const set = await exercise.sets.id(req.params.id);
         await set.deleteOne();

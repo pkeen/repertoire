@@ -9,7 +9,9 @@
     <p>With Repertoire, every rep is a step closer to your personal goals. Record your workouts, monitor your progress, and become a part of a community that cherishes every flex, every gain, and every milestone you achieve.</p>
 
 	<!-- <p>please login to continue</p> -->
-	<a href="/auth/google"><button type="button" class="btn btn-lg btn-primary">Login</button></a>	
+    <div class="col d-flex justify-content-center">
+        <a href="/auth/google"><button type="button" class="btn btn-lg btn-workout">Start Here</button></a>	
+    </div>
 
     <h2>Why Choose Repertoire?</h2>
 
@@ -26,9 +28,6 @@
     <p>Jump-start your journey towards a fitter, stronger, and happier you with Repertoire.</p>
 
     <p>Repertoire – Where every rep counts.</p>
-
-    <a href="#" class="download-button">Download Now</a>
-	<p>Add some reps to your repertoire</p>
 
 <% } else { %>
 	<p>Welcome, <%= user.name %></p>
