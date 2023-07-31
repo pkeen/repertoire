@@ -31,7 +31,18 @@
 
 <% } else { %>
 	<p>Welcome, <%= user.name %></p>
-	<a class="btn btn-workout" href="/workouts/new">Workout</a>
+	<div class="col-12 d-flex justify-content-center">
+        <button 
+            class="btn btn-lg btn-workout"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#newModal"
+        >
+            New
+        </button>
+    </div>
+
+    <%- include('./workouts/new') %>
 <% } %>
 
 <%- include('./partials/footer') %>

@@ -66,5 +66,6 @@ It also uses an API [ExerciseAPI](https://rapidapi.com/justin-WFnsXH_t6/api/exer
 * Add default date of now and display in UI ✅
 * Download all gifs ✅
 * Make sets update clientside - no redirect
+* Make default most recent weight and sets on new set
 
 

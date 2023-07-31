@@ -1,9 +1,14 @@
+const Workout = require('../models/workout');
+
 module.exports = {
   index
 }
 
-function index(req, res) {
+async function index(req, res) {
+  const newWorkout = new Workout();
+  
   res.render("index", {
-    title: "Homepage"
+    title: "Repertoire",
+    defaultDate: newWorkout.formatDateForDatetimeLocal()
   });
 }
