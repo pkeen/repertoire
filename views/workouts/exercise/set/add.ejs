@@ -7,7 +7,7 @@
             <label class="form-label text-set-dark" for="weight">Weight <%= user.preferences.measurement === 'metric' ? `(kg)` : `(lbs)` %></label>
         </div>
         <div class="col-6 col-sm-6 col-md-3 col-lg-3 mt-1">
-            <input class="form-control set-input" type="number" name="weight" id="weight">
+            <input class="form-control set-input" type="number" name="weight" id="weight<% i %>">
         </div>
     <!-- </div> -->
     <!-- <div class="row text-end justify-content-center align-items-center mt-1"> -->
@@ -15,7 +15,7 @@
             <label class="form-label text-set-dark" for="reps">Reps</label>
         </div>
         <div class="col-6 col-sm-6 col-md-3 col-lg-3">
-            <input class="form-control set-input" type="number" name="reps" id="reps">
+            <input class="form-control set-input" type="number" name="reps" id="reps<%= i %>">
         </div>
     </div>
     <div class="row mt-1">
@@ -24,3 +24,21 @@
         </div>
     </div>
 </form>
+
+<!-- <script>
+    (() => {
+        let i = `<%# i %>`;
+        const weight = document.getElementById(`weight${i}`);
+        const reps = document.getElementById(`reps${i}`);
+    
+        const getRecent = async () => {
+            const recentSet = await fetch('http://localhost:3000/workouts/64c303084802d5934b0417f7/exercises/64c44ea042b9dcc80969cb24/sets/recent');
+            const recentSetData = await recentSet.json()
+            console.log(recentSetData);
+        }
+    
+        getRecent();
+
+    })()
+
+</script> -->

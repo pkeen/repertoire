@@ -39,7 +39,22 @@ const deleteSet = async (req, res) => {
     }
 }
 
+// get most recent WIP
+// const mostRecent = async (req, res) => {
+//     try {
+//         // const mostRecentExercise = await Workout.findMostRecentExerciseSet(req.user.id, req.params.exerciseId);
+//         const recentSet = await Workout.findRecentSet(req.user._id, req.params.exerciseId);
+        
+//         console.log(recentSet);
+//         res.json(recentSet);
+//         // res.redirect(`/workouts/${req.params.workoutId}`)
+//     } catch (err) {
+//         console.log(err);
+//     }
+// }
+
 module.exports = {
     create,
-    delete: deleteSet
+    delete: deleteSet,
+    // mostRecent
 }

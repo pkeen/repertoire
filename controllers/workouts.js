@@ -77,6 +77,9 @@ const show = async ( req, res ) => {
         const bodyParts = await ExerciseData.getBodyPartOptions();
         const equipment = await ExerciseData.getEquipmentOptions();
         const exerciseData = await ExerciseData.find({});
+        // most recent workout
+        // const mostRecentExerciseSet = await Workout.findMostRecentExerciseSet(req.user.id);
+        // console.log(mostRecentExerciseSet);
 
         res.render('workouts/show', {
             title: workout.title,

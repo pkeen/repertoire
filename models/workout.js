@@ -18,11 +18,6 @@ const setSchema = new Schema({
 
 /* Exercise */
 const exerciseSchema = new Schema({
-    // workout and exercise fks
-    // workout: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Workout'
-    // },
     exerciseData: {
         type: Schema.Types.ObjectId,
         ref: 'Exercise'
@@ -80,25 +75,31 @@ const workoutSchema = new Schema({
                 year: 'numeric' 
             });
            return formattedTime + ' on ' + formattedDate; // "5:37 PM Wed, 9 July 2021"
-        }
+        },
+        
     },
     statics: {
         convertToKg(lbs) {
             return lbs * 0.45359237
-        }
+        },
+        findMostRecentExerciseSet(userId, exerciseId) {
+            const mostRecentWorkout = this.findOne({user: userId, exercise: exerciseId}).sort('-createdAt');
+            return mostRecentWorkout;
+        },
+        // find last set to populate field WIP
+        // findRecentSet(userId, exerciseId) {
+        //     return this.aggregate([
+        //         { $match: {user: userId} },
+        //         { $unwind: "$exercises" }, 
+        //         { $match: { "exercises._id": exerciseId } },
+        //         { $unwind: "$exercise.sets" },
+        //         { $sort: {"exercises.sets.createdAt": -1} },
+        //         { $limit: 1}
+        //     ]).exec() 
+        //         // handle error and use docs
+        // }
     }
 });
 
-// workoutSchema.methods.formatDateForDatetimeLocal = function() {
-//     const date = this.date;
-//     const year = date.getFullYear();
-//     const month = (date.getMonth() + 1).toString().padStart(2, '0'); // JS months are 0-based, so +1 and pad with 0s
-//     const day = date.getDate().toString().padStart(2, '0'); // pad with 0s
-//     const hours = date.getHours().toString().padStart(2, '0'); // pad with 0s
-//     const minutes = date.getMinutes().toString().padStart(2, '0'); // pad with 0s
-
-//     // concatenate the parts into a datetime-local string format
-//     return year + '-' + month + '-' + day + 'T' + hours + ':' + minutes;
-// };
 
 module.exports = mongoose.model('Workout', workoutSchema);
