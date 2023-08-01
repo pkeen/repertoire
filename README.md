@@ -29,8 +29,9 @@ It uses an API [ExerciseAPI](https://rapidapi.com/justin-WFnsXH_t6/api/exercised
 * Workout Templates
 * Front end, client-side AJAX. 
 * Dont include weight on certain exercises i.e. body weight exercises
-* Personal Tracking
+* Personal Tracking (weight/BMI, pics, graphs increasing strength in various exercises)
 * Native login
+* Badges and awards
 
 ## RESTful Routing 
 | Method     | URL Path                             | Action  | CRUD Operation                     |
