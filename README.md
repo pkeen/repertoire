@@ -1,19 +1,36 @@
 # Repertoire
-A workout tracking app. It allows Users to login, track their workouts.
-It also uses an API [ExerciseAPI](https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb/details) to generate the list of exercises a user can choose. 
+A workout tracking app. It allows Users to track their workouts, exercises and reps.
 
-## Wireframes
+It uses an API [ExerciseAPI](https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb/details) to get a list of exercises to choose from with helfpul gifs showing how to do them.
+
+## Screenshots
 ### Homepage
-![Homepage](./public/images/homepage.png)
+![Homepage](./public/images/landing-page.png)
 ### Workouts Index
-![workouts](./public/images/workouts.png)
+![workouts](./public/images/workout-index.png)
 ### Workouts Show
-![workouts-show](./public/images/workouts-show.png)
-### Set
-![workouts](./public/images/set.png)
+![workouts-show](./public/images/workout.png)
+### User/Options
+![User-Options](./public/images/user-options.png)
 
-## ERD Database Planning
-![ERD](./public/images/ERD.png)
+## Technology Used
+* Node
+* Express
+* MongoDB
+* Mongoose
+* Javascript
+* Bootstrap CSS
+* Sass
+
+## Getting Started
+<Link to app to come>
+
+## Next steps
+* Workout Templates
+* Front end, client-side AJAX. 
+* Dont include weight on certain exercises i.e. body weight exercises
+* Personal Tracking
+* Native login
 
 ## RESTful Routing 
 | Method     | URL Path                             | Action  | CRUD Operation                     |
@@ -39,33 +56,5 @@ It also uses an API [ExerciseAPI](https://rapidapi.com/justin-WFnsXH_t6/api/exer
 * AAU I want to search exercises by muscle, body-part and equipment ✅
 * AAU I want to be able to change the exercise without deleting the sets ✅
 
-## MVP
-* User Authentication (with Google) ✅
-* Add workouts ✅
-* Add exercises to workouts ✅
-* Add sets to exercises ✅
-* Add reps to sets ✅
-* Use the exerciseDB API ✅
-
-## Stretch Goals
-* A nicer front-end maybe using a library ✅
-    * Bringing views together, being able to add workout, exercise and set at the same time ✅
-* User metric tracking, e.g BMI, progress pics, body fat %
-* Built in login, or more login options
-* Users able to save workout templates to quickly get workouts
-* Weight and sets prefilled based on last time that exercise was performed
-* Workouts index page to be sorted by date and display the exercises included as subtext
-* Workouts index view toggle calender view
-
-## Work List
-* Improve Styling ✅
-* KG to Lbs calculation - front end? ✅
-    * Preference Model ✅
-* Dont include reps on certain exercises?
-* Dont include weight on certain exercises i.e. body weight exercises
-* Add default date of now and display in UI ✅
-* Download all gifs ✅
-* Make sets update clientside - no redirect
-* Make default most recent weight and sets on new set
 
 
